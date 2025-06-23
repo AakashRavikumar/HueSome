@@ -14,6 +14,10 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
+import { Cart } from './cart/entities/cart.entity';
+import { Product } from './products/entities/product.entity';
+import { User } from './user/entities/user.entity';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -29,6 +33,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         username: config.get<string>('DB_USR_NAME') || 'postgres',
         password: config.get<string>('DB_PSSWD') || 'postgres',
         database: config.get<string>('DB_NAME') || 'huesome_digiarts',
+        entities: [User, Product, Cart],
         autoLoadEntities: true,
         synchronize: true,
       }),

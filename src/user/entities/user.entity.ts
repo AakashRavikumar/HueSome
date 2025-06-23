@@ -6,10 +6,12 @@ import {
   BeforeInsert,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
 import { Role } from 'src/common/constants/roles.constants';
+import { Cart } from 'src/cart/entities/cart.entity';
 
 @Entity({ name: 'users' })
 export class User {
@@ -20,7 +22,7 @@ export class User {
   name: string;
 
   @Column()
-  mobile: number;
+  mobile: string;
 
   @Column({ unique: true })
   email: string;
@@ -38,6 +40,9 @@ export class User {
   @Column({ default: null })
   otp: string;
 
+  // @Column({ default: false })
+  // loggedIn: boolean; // need to work on this part .....
+
   @Column({ default: null })
   expiresAt: Date;
 
@@ -49,6 +54,9 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(() => Cart, (cart) => cart.user)
+  carts: Cart[];
 
   @BeforeInsert()
   async hashPassword() {

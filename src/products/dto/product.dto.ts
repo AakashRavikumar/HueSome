@@ -75,8 +75,10 @@ export class FindAllProductsDto {
   category: string;
 
   @IsNumber()
+  @Transform(({ value }) => +value)
   limit: number;
 
   @IsNumber()
+  @Transform(({ value }) => +value)
   page: number;
 }

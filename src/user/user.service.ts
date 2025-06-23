@@ -27,6 +27,7 @@ export class UserService {
 
       return new SuccessResponse(SuccessMessages.USER_REGISTERED, {}, 201);
     } catch (err: any) {
+      console.log(err);
       if (err?.code == 23505)
         return new ErrorResponse(
           ErrorMessages.USER_ALREADY_EXISTS,

@@ -12,6 +12,7 @@ export const SuccessMessages = {
   DOCUMENT_UPDATED: 'Document updated successfully',
   DOCUMENT_DELETED: 'Document deleted successfully',
   CATEGORY_CREATED: 'New category created',
+  CART_DETAILS_SAVED: 'Cart details saved successfully',
 };
 
 export const ErrorMessages = {
@@ -38,4 +39,5 @@ export const ErrorMessages = {
   FAILED_TO_UPDATE_DOC: 'Failed to update document',
   FAILED_TO_DELETE_DOC: 'Failed to delete document!',
   FAILED_TO_CREATE_CATEGORY: 'Failed to create category',
+  FAILED_TO_CREATE: 'Failed to create cart',
 };
