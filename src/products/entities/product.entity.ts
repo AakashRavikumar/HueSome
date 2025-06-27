@@ -5,7 +5,7 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToMany,
+  ManyToOne,
 } from 'typeorm';
 
 import { Cart } from 'src/cart/entities/cart.entity';
@@ -54,6 +54,6 @@ export class Product {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToMany(() => Cart, (cart) => cart.products)
-  carts: Cart[];
+  @ManyToOne(() => Cart, (cart) => cart.products)
+  cart: Cart;
 }

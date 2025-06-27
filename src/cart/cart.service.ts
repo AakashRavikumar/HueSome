@@ -22,6 +22,13 @@ export class CartService {
     try {
       // const cart = this.cartRepository.create(Body);
       console.log(Body);
+
+      let data: any = {
+        user: { id: Body.userId },
+        products: Body.productIds.map((id) => ({ id })),
+        status: Body.status,
+      };
+
       await this.cartRepository.save(Body);
 
       return new SuccessResponse(SuccessMessages.CART_DETAILS_SAVED, {}, 201);

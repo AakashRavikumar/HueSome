@@ -8,7 +8,7 @@ import {
   ManyToOne,
   JoinColumn,
   JoinTable,
-  ManyToMany,
+  OneToMany,
 } from 'typeorm';
 
 import { User } from 'src/user/entities/user.entity';
@@ -20,15 +20,15 @@ export class Cart {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User, (user) => user.carts)
+  @OneToMany(() => User, (user) => user.carts)
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @ManyToMany(() => Product, (product) => product.carts)
+  @OneToMany(() => Product, (product) => product.cart)
   @JoinTable({
     name: 'cart_products',
-    joinColumn: { name: 'cart_id', referencedColumnName: 'id' },
-    inverseJoinColumn: { name: 'product_id', referencedColumnName: 'id' },
+    // joinColumn: { name: 'cart_id', referencedColumnName: 'id' },
+    // inverseJoinColumn: { name: 'product_id', referencedColumnName: 'id' },
   })
   products: Product[];
 
